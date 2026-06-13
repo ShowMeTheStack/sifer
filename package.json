@@ -1,0 +1,14 @@
+{
+  "name": "sifer",
+  "version": "0.1.0",
+  "description": "Cryptography you can see inside, and break: every cipher, hash and curve opened up, with every value drawn.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs",
+    "test": "node tests/run.mjs",
+    "diagrams": "node tools/check-diagrams.mjs"
+  },
+  "author": "Jyotiprakash Mishra <mail@jyotiprakash.org>",
+  "license": "GPL-3.0-or-later"
+}
