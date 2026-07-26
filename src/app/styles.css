@@ -1,0 +1,334 @@
+/* Sifer: the calm look of its sister tools, with a sapphire accent. Light and dark palettes, and the colours that
+   carry meaning in every drawing: the active path (accent), key material (rose), what just changed (amber) and
+   the heat of a difference (vermilion, in eight steps). */
+:root {
+  --font: "Inter", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
+  --mono: ui-monospace, "SF Mono", Menlo, Consolas, "DejaVu Sans Mono", monospace;
+  --bg: #f5f6fb;
+  --surface: #ffffff;
+  --surface2: #f0f2f8;
+  --surface3: #e8ebf4;
+  --border: #e0e4ee;
+  --text: #191d33;
+  --muted: #5f6884;
+  --accent: #1f5fcc;
+  --accent-soft: #e4ecfb;
+  --accent-text: #ffffff;
+  --good: #0f9d76;
+  --good-soft: #e3f7f0;
+  --bad: #e11d48;
+  --bad-soft: #fde8ee;
+  --shadow: 0 1px 2px rgba(20, 24, 50, 0.05), 0 4px 18px rgba(20, 24, 50, 0.06);
+  --radius: 14px;
+  /* the stage */
+  --st-bg: #fbfbfe;
+  --st-grid: #eceef6;
+  --node: #ffffff;
+  --node-line: #8f98b8;
+  --node-text: #191d33;
+  --edge: #5f6787;
+  --wire: #4b5375;
+  --hot: #f59e0b;
+  --hot-deep: #a14a06;
+  --hot-soft: #fff1d1;
+  --act: #1f5fcc;
+  --act-deep: #17489c;
+  --act-soft: #e2ebfb;
+  --key: #c0267a;
+  --key-deep: #9c1c62;
+  --key-soft: #fbe5f1;
+  --heat: #e4572e;
+  --bit-off: #eef0f7;
+  --bit-on: #2a3150;
+  --c1: #3b82f6; --c2: #10b981; --c4: #a855f7;
+  color-scheme: light;
+}
+:root[data-theme="dark"] {
+  --bg: #0e1120;
+  --surface: #161a2d;
+  --surface2: #1d2238;
+  --surface3: #252b45;
+  --border: #2a3050;
+  --text: #e7e9f3;
+  --muted: #a0a8c4;
+  --accent: #7ea6ff;
+  --accent-soft: #1a2950;
+  --accent-text: #0e1120;
+  --good: #34d399;
+  --good-soft: #12352c;
+  --bad: #fb7185;
+  --bad-soft: #3a1825;
+  --shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 4px 18px rgba(0, 0, 0, 0.25);
+  --st-bg: #131729;
+  --st-grid: #1b2036;
+  --node: #1d2340;
+  --node-line: #6b7499;
+  --node-text: #e7e9f3;
+  --edge: #a3abcc;
+  --wire: #aab2d2;
+  --hot: #fbbf24;
+  --hot-deep: #fcd34d;
+  --hot-soft: #3b3017;
+  --act: #7ea6ff;
+  --act-deep: #a9c3ff;
+  --act-soft: #1b2a4e;
+  --key: #f472b6;
+  --key-deep: #f9a8d4;
+  --key-soft: #3d1a31;
+  --heat: #ff7a4f;
+  --bit-off: #222842;
+  --bit-on: #dfe4f7;
+  --c1: #60a5fa; --c2: #34d399; --c4: #c084fc;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { background: var(--bg); color: var(--text); font: 15px/1.5 var(--font); -webkit-text-size-adjust: 100%; }
+button { font: inherit; color: inherit; }
+a { color: var(--accent); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+code, .mono { font-family: var(--mono); }
+
+.top { position: sticky; top: 0; z-index: 10; display: flex; align-items: center; gap: 12px; padding: 8px 16px; background: var(--surface); border-bottom: 1px solid var(--border); min-height: 56px; }
+.brand { display: flex; align-items: center; gap: 9px; font-weight: 750; font-size: 19px; color: var(--text); text-decoration: none; letter-spacing: -0.01em; }
+.brand .mark { width: 30px; height: 30px; border-radius: 9px; background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 50%, #7c3aed)); display: grid; place-items: center; }
+.brand .mark svg { width: 24px; height: 24px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.top-tools { margin-left: auto; display: flex; gap: 4px; align-items: center; }
+.icon-btn { width: 38px; height: 38px; border-radius: 10px; border: 1px solid transparent; background: none; display: inline-grid; place-items: center; cursor: pointer; color: var(--text); flex: none; }
+.icon-btn:hover { background: var(--surface2); }
+.icon-btn:disabled { opacity: 0.4; cursor: default; }
+.icon-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.icon-btn.fill svg { fill: currentColor; stroke: none; }
+
+.main { max-width: 1240px; margin: 0 auto; padding: 22px 22px 60px; }
+.demo-head h1 { margin: 4px 0 4px; font-size: 26px; letter-spacing: -0.02em; }
+.demo-head p { margin: 0 0 6px; color: var(--muted); max-width: 820px; }
+.demo-nav { display: flex; flex-wrap: wrap; gap: 6px; margin: 12px 0 4px; }
+.demo-nav a { font-size: 13px; padding: 4px 11px; border: 1px solid var(--border); border-radius: 999px; text-decoration: none; color: var(--text); background: var(--surface); }
+.demo-nav a:hover { border-color: var(--accent); color: var(--accent); }
+
+.scene { margin-top: 22px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; scroll-margin-top: 70px; }
+.scene-head { padding: 13px 18px 11px; border-bottom: 1px solid var(--border); display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+.scene-head h2 { margin: 0; font-size: 18px; letter-spacing: -0.01em; }
+.scene-head .tag { font-size: 12px; font-weight: 650; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; }
+.scene-head p { margin: 0; color: var(--muted); font-size: 14px; flex-basis: 100%; }
+.stage-wrap { position: relative; background: var(--st-bg); background-image: radial-gradient(var(--st-grid) 1.1px, transparent 1.2px); background-size: 22px 22px; }
+.stage-svg { width: 100%; height: 100%; display: block; }
+.say { padding: 13px 18px; font-size: 16px; line-height: 1.55; min-height: 92px; border-top: 1px solid var(--border); }
+.say .step { color: var(--muted); font-size: 12px; font-weight: 650; text-transform: uppercase; letter-spacing: 0.05em; display: block; margin-bottom: 2px; }
+.say .v { font-family: var(--mono); font-weight: 600; font-size: 0.94em; overflow-wrap: anywhere; }
+.controls { display: flex; align-items: center; gap: 8px; padding: 9px 14px; border-top: 1px solid var(--border); background: var(--surface2); }
+.controls .icon-btn { background: var(--surface); border-color: var(--border); }
+.controls .icon-btn.play { background: var(--accent); color: var(--accent-text); border-color: var(--accent); width: 44px; height: 44px; border-radius: 50%; }
+.controls input[type="range"] { flex: 1; min-width: 80px; accent-color: var(--accent); }
+.controls .pos { font-variant-numeric: tabular-nums; color: var(--muted); font-size: 13px; min-width: 58px; text-align: right; }
+
+@media (max-width: 600px) {
+  .main { padding: 12px 16px 40px; }
+  .top { padding: 8px 12px; }
+  .demo-head h1 { font-size: 21px; }
+  .scene { margin-top: 16px; border-radius: 12px; }
+  .scene-head { padding: 11px 14px 9px; }
+  .scene-head h2 { font-size: 16px; }
+  .say { font-size: 15px; padding: 11px 14px; min-height: 80px; }
+  .controls { gap: 6px; padding: 8px 10px; }
+}
+
+/* ---- SVG items ---- */
+.st-shape { fill: var(--node); stroke: var(--node-line); stroke-width: 1.6; }
+.st-ring { fill: none; stroke: var(--node-line); stroke-width: 1.6; }
+.st-text { font: 650 15px var(--font); fill: var(--node-text); }
+.st-sub { font: 500 12px var(--font); fill: var(--muted); }
+.it.dim { opacity: 0.42; }
+.it.pulse .st-shape, .it.pulse .cell-box, .it.pulse .op-shape { animation: pulse 0.9s ease-out; }
+@keyframes pulse { 0% { stroke: var(--hot); stroke-width: 6; } 100% { } }
+.edge-path { fill: none; stroke: var(--edge); stroke-width: 1.8; stroke-linecap: round; }
+.arrowhead { fill: var(--edge); }
+.arrowhead.hot { fill: var(--hot); } .arrowhead.dim { fill: var(--node-line); } .arrowhead.bad { fill: var(--bad); } .arrowhead.alt { fill: var(--c4); } .arrowhead.good { fill: var(--good); }
+.arrowhead.wire { fill: var(--wire); } .arrowhead.act { fill: var(--act); } .arrowhead.key { fill: var(--key); }
+.edge-label { font: 600 14px var(--font); fill: var(--text); paint-order: stroke; stroke: var(--st-bg); stroke-width: 5px; stroke-linejoin: round; }
+.it-edge.hot .edge-path { stroke: var(--hot); stroke-width: 2.6; }
+.it-edge.act .edge-path { stroke: var(--act); stroke-width: 2.4; }
+
+.cell-box { fill: var(--node); stroke: var(--node-line); stroke-width: 1.2; }
+.cell-text { font: 600 16px var(--font); fill: var(--node-text); }
+.cell-sub { font: 500 11px var(--mono); fill: var(--muted); }
+.it-cell.mono .cell-text, .it-cell.hex .cell-text { font-family: var(--mono); }
+.it-cell.hex .cell-text { font-weight: 600; letter-spacing: 0.01em; }
+.it-cell.head .cell-box { fill: var(--surface2); stroke: var(--border); }
+.it-cell.head .cell-text { font-weight: 700; fill: var(--muted); font-size: 13px; }
+.it-cell.nobox .cell-box { fill: none; stroke: none; }
+.it-cell.hot .cell-box { fill: var(--hot-soft); stroke: var(--hot); stroke-width: 2.4; }
+.it-cell.act .cell-box { fill: var(--act-soft); stroke: var(--act); stroke-width: 2.2; }
+.it-cell.act .cell-text { fill: var(--act-deep); }
+.it-cell.key .cell-box { fill: var(--key-soft); stroke: var(--key); stroke-width: 1.6; }
+.it-cell.key .cell-text { fill: var(--key-deep); }
+.it-cell.keyhot .cell-box { fill: var(--key-soft); stroke: var(--key); stroke-width: 2.6; }
+.it-cell.keyhot .cell-text { fill: var(--key-deep); }
+.it-cell.changed .cell-box { fill: var(--hot-soft); }
+.it-cell.muted .cell-text { fill: var(--muted); font-weight: 500; }
+.it-cell.soft .cell-box { fill: var(--surface2); }
+.it-cell.bit .cell-text { font: 600 13px var(--mono); }
+.it-cell.bit.one .cell-box { fill: color-mix(in srgb, var(--wire) 16%, var(--node)); }
+.it-cell.bit.hot .cell-box { fill: var(--hot-soft); stroke: var(--hot); stroke-width: 1.8; }
+.it-cell.bit.act .cell-box { fill: var(--act-soft); stroke: var(--act); stroke-width: 1.8; }
+.it-cell.bit.key .cell-box { fill: var(--key-soft); stroke: var(--key); stroke-width: 1.6; }
+.it-cell.panel .cell-box { fill: var(--surface); stroke: var(--border); }
+.it-cell.tab .cell-box { fill: var(--surface2); stroke: var(--border); }
+.it-cell.tab .cell-text { font-size: 13px; font-weight: 700; fill: var(--muted); }
+/* the heat of a difference: h0 (none) .. h8 (every bit of the byte) */
+.it-cell.h0 .cell-box { fill: var(--node); }
+.it-cell.h0 .cell-text { fill: var(--muted); font-weight: 500; }
+.it-cell.h1 .cell-box { fill: color-mix(in srgb, var(--heat) 14%, var(--node)); }
+.it-cell.h2 .cell-box { fill: color-mix(in srgb, var(--heat) 24%, var(--node)); }
+.it-cell.h3 .cell-box { fill: color-mix(in srgb, var(--heat) 34%, var(--node)); }
+.it-cell.h4 .cell-box { fill: color-mix(in srgb, var(--heat) 45%, var(--node)); }
+.it-cell.h5 .cell-box { fill: color-mix(in srgb, var(--heat) 57%, var(--node)); }
+.it-cell.h6 .cell-box { fill: color-mix(in srgb, var(--heat) 70%, var(--node)); }
+.it-cell.h7 .cell-box { fill: color-mix(in srgb, var(--heat) 84%, var(--node)); }
+.it-cell.h8 .cell-box { fill: var(--heat); }
+.it-cell.h5 .cell-text, .it-cell.h6 .cell-text, .it-cell.h7 .cell-text, .it-cell.h8 .cell-text { fill: #fff; }
+:root[data-theme="dark"] .it-cell.h5 .cell-text, :root[data-theme="dark"] .it-cell.h6 .cell-text, :root[data-theme="dark"] .it-cell.h7 .cell-text, :root[data-theme="dark"] .it-cell.h8 .cell-text { fill: #1a0d06; }
+.it-cell.hframe .cell-box { stroke: var(--node-line); stroke-width: 1; }
+
+.free-text { font: 500 14px var(--font); fill: var(--muted); }
+.it-text.title .free-text { font: 700 13px var(--font); fill: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; }
+.it-text.big .free-text { font-size: 20px; font-weight: 700; fill: var(--text); }
+.it-text.mono .free-text { font-family: var(--mono); fill: var(--text); font-weight: 600; }
+.it-text.strong .free-text { fill: var(--text); font-weight: 650; }
+.it-text.math .free-text { font-family: var(--mono); fill: var(--text); font-weight: 500; }
+.it-text.good .free-text { fill: var(--good); font-weight: 700; }
+.it-text.hot .free-text { fill: var(--hot-deep); font-weight: 700; }
+.it-text.act .free-text { fill: var(--act); font-weight: 700; }
+.it-text.key .free-text { fill: var(--key); font-weight: 700; }
+.it-text.heat .free-text { fill: var(--heat); font-weight: 700; }
+.region-box { fill: color-mix(in srgb, var(--surface2) 70%, transparent); stroke: var(--border); stroke-width: 1.2; }
+.region-text { font: 700 12px var(--font); fill: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; }
+.it-region.panel .region-box { fill: var(--surface); stroke: var(--border); }
+.it-region.act .region-box { fill: color-mix(in srgb, var(--act) 6%, var(--st-bg)); stroke: color-mix(in srgb, var(--act) 45%, transparent); stroke-dasharray: 5 4; }
+.it-region.hot .region-box { fill: color-mix(in srgb, var(--hot) 8%, var(--st-bg)); stroke: var(--hot); stroke-width: 1.8; }
+.it-region.frame .region-box { fill: none; stroke: var(--node-line); stroke-dasharray: 5 5; }
+.it-region.lens .region-box { fill: color-mix(in srgb, var(--act) 10%, transparent); stroke: var(--act); stroke-width: 2; }
+.plain-line { stroke: var(--node-line); stroke-width: 1.4; }
+.it-line.hot .plain-line { stroke: var(--hot); stroke-width: 2.4; }
+.it-line.act .plain-line { stroke: var(--act); stroke-width: 2; }
+.it-line.dash .plain-line { stroke-dasharray: 5 5; }
+.it-line.rule .plain-line { stroke: var(--text); stroke-width: 1.4; }
+.it-line.faint .plain-line { stroke: var(--border); stroke-width: 1; }
+.token-dot { fill: var(--hot); stroke: var(--surface); stroke-width: 2; }
+.token-text { font: 700 11px var(--font); fill: #1b1300; }
+.head-tag { fill: var(--act); }
+.head-text { font: 700 13px var(--font); fill: var(--accent-text); }
+.it-head.hot .head-tag { fill: var(--hot); } .it-head.hot .head-text { fill: #1b1300; }
+.bracket-path { fill: none; stroke: var(--muted); stroke-width: 1.5; }
+.bracket-text { font: 600 13px var(--font); fill: var(--muted); }
+.it-bracket.act .bracket-path { stroke: var(--act); } .it-bracket.act .bracket-text { fill: var(--act); }
+.it-bracket.hot .bracket-path { stroke: var(--hot); } .it-bracket.hot .bracket-text { fill: var(--hot-deep); }
+.it-bracket.key .bracket-path { stroke: var(--key); } .it-bracket.key .bracket-text { fill: var(--key); }
+
+/* data flow: wires, blocks, operators, values riding along */
+.wire-path { fill: none; stroke: var(--wire); stroke-width: 1.7; stroke-linejoin: miter; stroke-linecap: butt; }
+.it-wire.bus .wire-path { stroke-width: 3; }
+.it-wire.act .wire-path { stroke: var(--act); stroke-width: 2.4; }
+.it-wire.act.bus .wire-path { stroke-width: 3.4; }
+.it-wire.key .wire-path { stroke: var(--key); }
+.it-wire.hot .wire-path { stroke: var(--hot); stroke-width: 2.4; }
+.it-wire.faint .wire-path { stroke: var(--node-line); stroke-dasharray: 4 4; stroke-width: 1.3; }
+.it-wire.tick .wire-path { stroke-width: 1.4; }
+.it-state.block .st-shape { fill: var(--node); stroke: var(--wire); stroke-width: 1.7; }
+.it-state.block .st-text { font: 650 15px var(--font); }
+.it-state.block.cipher .st-shape { fill: color-mix(in srgb, var(--act) 9%, var(--node)); stroke: var(--act); stroke-width: 2; }
+.it-state.block.cipher .st-text { fill: var(--act-deep); font-weight: 700; font-size: 17px; }
+.it-state.block.act .st-shape { fill: var(--act-soft); stroke: var(--act); stroke-width: 2.4; }
+.it-state.block.act .st-text { fill: var(--act-deep); }
+.it-state.block.hot .st-shape { fill: var(--hot-soft); stroke: var(--hot); stroke-width: 2.4; }
+.it-state.block.key .st-shape { fill: var(--key-soft); stroke: var(--key); }
+.it-state.block.key .st-text { fill: var(--key-deep); }
+.it-state.block.val .st-text { font: 600 14px var(--mono); }
+.it-state.block.val .st-text:first-child { font-family: var(--font); }
+.it-state.block.small .st-text { font-size: 13px; }
+.it-state.block.soft .st-shape { fill: var(--surface2); stroke: var(--node-line); }
+.op-shape { fill: var(--node); stroke: var(--wire); stroke-width: 1.7; }
+.op-mark { fill: none; stroke: var(--wire); stroke-width: 1.7; }
+.it-op.act .op-shape { stroke: var(--act); stroke-width: 2.2; fill: var(--act-soft); } .it-op.act .op-mark { stroke: var(--act); stroke-width: 2.2; }
+.it-op.hot .op-shape { stroke: var(--hot); stroke-width: 2.2; fill: var(--hot-soft); } .it-op.hot .op-mark { stroke: var(--hot-deep); stroke-width: 2.2; }
+.chip-box { fill: var(--surface); stroke: var(--node-line); stroke-width: 1.2; }
+.chip-text { font: 600 13px var(--mono); fill: var(--text); }
+.it-chip.act .chip-box { stroke: var(--act); fill: var(--act-soft); } .it-chip.act .chip-text { fill: var(--act-deep); }
+.it-chip.hot .chip-box { stroke: var(--hot); fill: var(--hot-soft); } .it-chip.hot .chip-text { fill: var(--hot-deep); }
+.it-chip.key .chip-box { stroke: var(--key); fill: var(--key-soft); } .it-chip.key .chip-text { fill: var(--key-deep); }
+.it-chip.plain .chip-box { stroke: var(--border); }
+.dot-shape { fill: var(--wire); }
+.it-dot.act .dot-shape { fill: var(--act); } .it-dot.key .dot-shape { fill: var(--key); } .it-dot.hot .dot-shape { fill: var(--hot); }
+.it-dot.pt .dot-shape { fill: var(--wire); stroke: var(--st-bg); stroke-width: 1.5; }
+.it-dot.cloud .dot-shape { fill: color-mix(in srgb, var(--wire) 55%, var(--st-bg)); }
+.it-dot.P .dot-shape { fill: var(--act); stroke: var(--st-bg); stroke-width: 2; }
+.it-dot.Q .dot-shape { fill: var(--key); stroke: var(--st-bg); stroke-width: 2; }
+.it-dot.R .dot-shape { fill: var(--good); stroke: var(--st-bg); stroke-width: 2; }
+.it-dot.third .dot-shape { fill: var(--st-bg); stroke: var(--hot); stroke-width: 2.4; }
+.free-path { fill: none; stroke: var(--wire); stroke-width: 1.6; }
+.it-path.curve .free-path { stroke: var(--text); stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; }
+.it-path.axis .free-path { stroke: var(--node-line); stroke-width: 1.2; }
+.it-path.grid .free-path { stroke: var(--st-grid); stroke-width: 1; }
+.it-path.chord .free-path { stroke: var(--hot); stroke-width: 2; }
+.it-path.mirror .free-path { stroke: var(--good); stroke-width: 1.8; stroke-dasharray: 5 4; }
+.it-path.modline .free-path { stroke: var(--hot); stroke-width: 1.6; stroke-dasharray: 6 4; }
+.it-path.iso .free-path { stroke: var(--node-line); stroke-width: 1.2; fill: color-mix(in srgb, var(--surface2) 80%, transparent); }
+.it-path.iso.top .free-path { fill: color-mix(in srgb, var(--act) 8%, var(--node)); }
+.it-path.iso.side .free-path { fill: color-mix(in srgb, var(--wire) 12%, var(--node)); }
+.it-path.iso.hot .free-path { fill: var(--hot-soft); stroke: var(--hot); stroke-width: 1.6; }
+.it-path.iso.act .free-path { fill: var(--act-soft); stroke: var(--act); stroke-width: 1.6; }
+.it-path.iso.lines .free-path { fill: none; stroke: color-mix(in srgb, var(--node-line) 70%, transparent); stroke-width: 0.9; }
+.bm-frame { fill: none; stroke: none; }
+.bm.b0 { fill: var(--bit-off); }
+.bm.b1 { fill: var(--bit-on); }
+.bm.b2 { fill: var(--hot); }
+.bm.b3 { fill: var(--act); }
+.bm.b4 { fill: var(--key); }
+.bm.b5 { fill: color-mix(in srgb, var(--bit-on) 35%, var(--bit-off)); }
+.bm.b6 { fill: var(--heat); }
+.bm.b7 { fill: color-mix(in srgb, var(--act) 30%, var(--bit-off)); }
+/* the four columns of an AES state, told apart (ShiftRows) */
+.it-cell.col0 .cell-box { fill: color-mix(in srgb, var(--c1) 16%, var(--node)); stroke: color-mix(in srgb, var(--c1) 70%, var(--node)); }
+.it-cell.col1 .cell-box { fill: color-mix(in srgb, var(--c2) 16%, var(--node)); stroke: color-mix(in srgb, var(--c2) 70%, var(--node)); }
+.it-cell.col2 .cell-box { fill: color-mix(in srgb, var(--c4) 15%, var(--node)); stroke: color-mix(in srgb, var(--c4) 70%, var(--node)); }
+.it-cell.col3 .cell-box { fill: color-mix(in srgb, var(--hot) 18%, var(--node)); stroke: color-mix(in srgb, var(--hot) 80%, var(--node)); }
+.it-cell.ring .cell-box { stroke: var(--text); stroke-width: 2.6; }
+/* an S-box block: its six input bits, its name, its four output bits */
+.it-state.sbox .st-text { font: 600 13px var(--mono); fill: var(--muted); }
+.it-state.sbox .st-text:nth-child(2) { font: 700 14px var(--font); fill: var(--text); }
+.it-state.sbox .st-text:nth-child(3) { fill: var(--hot-deep); font-weight: 700; }
+.it-state.block.val2 .st-text:first-child { font: 700 14px var(--font); fill: var(--muted); }
+.it-state.block.val2 .st-text:nth-child(2) { font: 600 15px var(--mono); }
+.it-state.block.key.val2 .st-text:nth-child(2) { fill: var(--key-deep); }
+.it-state.block.hot.val2 .st-text:nth-child(2) { fill: var(--hot-deep); }
+.it-state.block.act.val2 .st-text:nth-child(2) { fill: var(--act-deep); }
+/* a data block: its name, then its bytes in two lines */
+.it-state.block.val3 .st-text { font: 600 14px var(--mono); }
+.it-state.block.val3 .st-text:first-child { font: 700 13px var(--font); fill: var(--muted); }
+.it-state.block.key.val3 .st-text { fill: var(--key-deep); }
+.it-state.block.hot.val3 .st-text:not(:first-child) { fill: var(--hot-deep); }
+.it-path.hopwire .free-path { stroke: var(--wire); stroke-width: 1.7; fill: none; }
+.it-path.hopwire.act .free-path { stroke: var(--act); stroke-width: 2.4; }
+/* an operand that is read, not written */
+.it-text.src .free-text { fill: var(--c4); font-weight: 700; }
+.it-cell.bit.src .cell-box { fill: color-mix(in srgb, var(--c4) 14%, var(--node)); stroke: var(--c4); stroke-width: 1.5; }
+.it-cell.bit.src .cell-text { fill: color-mix(in srgb, var(--c4) 70%, var(--text)); }
+/* bits drawn without their digits (on a phone): a set bit is solid */
+.it-cell.bit.solid.one .cell-box { fill: var(--bit-on); }
+.it-cell.bit.solid.one.hot .cell-box { fill: var(--hot); }
+.it-cell.bit.solid.one.act .cell-box { fill: var(--act); }
+.it-cell.bit.solid.one.src .cell-box { fill: var(--c4); }
+.it-state.block.src .st-shape { fill: color-mix(in srgb, var(--c4) 10%, var(--node)); stroke: var(--c4); stroke-width: 2; }
+.it-cell.src .cell-box { fill: color-mix(in srgb, var(--c4) 12%, var(--node)); stroke: var(--c4); stroke-width: 2; }
+.it-text.tick .free-text { font: 500 13px var(--font); fill: var(--muted); font-variant-numeric: tabular-nums; }
+.it-text.ptname .free-text { font: 700 15px var(--font); fill: var(--text); paint-order: stroke; stroke: var(--st-bg); stroke-width: 4px; stroke-linejoin: round; }
+.it-text.ptname.P .free-text { fill: var(--act); } .it-text.ptname.Q .free-text { fill: var(--key); } .it-text.ptname.R .free-text { fill: var(--good); } .it-text.ptname.third .free-text { fill: var(--hot-deep); }
+.it-path.tangent .free-path { stroke: var(--hot); stroke-width: 2; }
+.it-text.eq .free-text { font: 500 16px var(--font); fill: var(--text); }
+.it-text.eq.act .free-text { fill: var(--act); font-weight: 650; } .it-text.eq.key .free-text { fill: var(--key); font-weight: 650; }
+.it-text.eq.good .free-text { fill: var(--good); font-weight: 700; } .it-text.eq.hot .free-text { fill: var(--hot-deep); font-weight: 700; }
+.it-text.eq.strong .free-text { font-weight: 700; }
+.it-state.block.val2.tight .st-text:first-child { font-size: 12px; }
+.it-state.block.val2.tight .st-text:nth-child(2) { font-size: 13px; }
