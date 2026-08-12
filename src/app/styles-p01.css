@@ -1,0 +1,46 @@
+/* Part 1 topics: plaintext, ciphertext and key letters told apart, bars of letter counts, the best candidate */
+.it-cell.p1-pl .cell-box, .it-state.p1-pl .st-shape { fill: var(--node); stroke: var(--node-line); }
+.it-cell.p1-ct .cell-box, .it-state.p1-ct .st-shape { fill: var(--act-soft); stroke: color-mix(in srgb, var(--act) 55%, var(--node)); }
+.it-cell.p1-ct .cell-text, .it-state.p1-ct .st-text { fill: var(--act-deep); }
+.it-cell.p1-key .cell-box, .it-state.p1-key .st-shape { fill: var(--key-soft); stroke: color-mix(in srgb, var(--key) 60%, var(--node)); }
+.it-cell.p1-key .cell-text, .it-state.p1-key .st-text { fill: var(--key-deep); }
+.it-cell.hot .cell-box, .it-state.hot .st-shape { fill: var(--hot-soft); stroke: var(--hot); stroke-width: 2.4; }
+.it-cell.hot .cell-text, .it-state.hot .st-text { fill: var(--hot-deep); }
+.it-state.p1-seen .st-shape { fill: color-mix(in srgb, var(--hot) 12%, var(--node)); }
+.it-cell.p1-bar .cell-box { fill: color-mix(in srgb, var(--wire) 30%, var(--node)); stroke: none; }
+.it-cell.p1-bar.p1-eng .cell-box { fill: color-mix(in srgb, var(--good) 35%, var(--node)); }
+.it-cell.p1-bar.act .cell-box { fill: var(--act); }
+.it-cell.p1-bar.hot .cell-box { fill: var(--hot); }
+.it-cell.p1-bar.key .cell-box { fill: var(--key); }
+.it-cell.p1-bar.p1-best .cell-box, .it-cell.p1-best .cell-box { fill: var(--good); stroke: none; }
+.it-cell.p1-best .cell-text { fill: #fff; }
+:root[data-theme="dark"] .it-cell.p1-best .cell-text { fill: #062018; }
+.it-cell.p1-bad .cell-box { fill: var(--bad-soft); stroke: var(--bad); stroke-width: 2.2; }
+.it-cell.p1-bad .cell-text { fill: var(--bad); }
+.it-cell.p1-good .cell-box { fill: var(--good-soft); stroke: var(--good); stroke-width: 2; }
+.it-cell.p1-good .cell-text { fill: var(--good); }
+.it-cell.p1-ghost .cell-box { fill: none; stroke: var(--border); stroke-dasharray: 3 3; }
+.it-cell.p1-ghost .cell-text { fill: var(--muted); font-weight: 500; }
+.it-text.p1-cttext .free-text { font-family: var(--mono); fill: var(--act-deep); font-weight: 600; }
+.it-text.bad .free-text { fill: var(--bad); font-weight: 700; }
+.it-path.p1-fwd .free-path { stroke: var(--act); stroke-width: 2.6; fill: none; stroke-linejoin: round; }
+.it-path.p1-back .free-path { stroke: var(--hot); stroke-width: 2.6; fill: none; stroke-linejoin: round; }
+.it-path.p1-faint .free-path { stroke: var(--border); stroke-width: 1; fill: none; }
+.it-path.p1-curve .free-path { stroke: var(--act); stroke-width: 2.2; fill: none; stroke-linejoin: round; }
+.it-path.p1-chord .free-path { stroke: var(--node-line); stroke-width: 1.4; fill: none; }
+.it-path.p1-chord.hot .free-path { stroke: var(--hot); stroke-width: 2.6; }
+.it-path.p1-chord.act .free-path { stroke: var(--act); stroke-width: 2.4; }
+.it-path.p1-chord.key .free-path { stroke: var(--key); stroke-width: 2.2; }
+.it-dot.good .dot-shape { fill: var(--good); }
+.it-path.p1-cable .free-path { stroke: var(--key); stroke-width: 2; fill: none; }
+.it-cell.p1-lamp .cell-box { fill: #facc15; stroke: #a16207; stroke-width: 2; }
+.it-cell.p1-lamp .cell-text { fill: #3b2a00; }
+.it-state.p1-node .st-shape { fill: var(--node); stroke: var(--wire); stroke-width: 1.8; }
+.it-state.p1-node.hot .st-shape { fill: var(--hot-soft); stroke: var(--hot); stroke-width: 2.6; }
+.it-state.p1-reg .st-shape, .it-state.p1-reg .st-ring { stroke: var(--key); }
+.it-edge.p1-faint .edge-path { stroke: var(--border); }
+.edge-label.p1-elab { font: 600 14px var(--mono); fill: var(--muted); }
+.edge-label.p1-elab.hot { fill: var(--hot-deep); }
+.it-state.p1-wheel .st-shape { fill: var(--surface2); stroke: var(--node-line); }
+.it-cell.p1-notch .cell-box { stroke: var(--key); stroke-width: 2; stroke-dasharray: 4 3; }
+.it-edge.p1-double .edge-path { stroke-width: 3.2; }
