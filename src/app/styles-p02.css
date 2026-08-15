@@ -1,0 +1,65 @@
+/* Part 2, number theory: the modular clock, residues on rings and lines, tables of Z_n, and fields. */
+.it-path.nt-ring .free-path { fill: none; stroke: var(--node-line); stroke-width: 2; opacity: 0.7; }
+.it-path.nt-arc .free-path { fill: none; stroke: var(--act); stroke-width: 3; stroke-linecap: round; }
+.it-path.nt-arc.hot .free-path { stroke: var(--hot); }
+.it-path.nt-arc.key .free-path { stroke: var(--key); }
+.it-path.nt-arc.good .free-path { stroke: var(--good); }
+.it-path.nt-arc.thin .free-path { stroke-width: 1.8; }
+.it-path.nt-arc.faint .free-path { stroke: var(--node-line); stroke-width: 1.5; }
+.it-path.nt-head .free-path { fill: var(--act); stroke: none; }
+.it-path.nt-head.hot .free-path { fill: var(--hot); }
+.it-path.nt-head.key .free-path { fill: var(--key); }
+.it-path.nt-head.good .free-path { fill: var(--good); }
+.it-path.nt-head.faint .free-path { fill: var(--node-line); }
+.it-line.nt-hand .plain-line { stroke: var(--text); stroke-width: 3.4; stroke-linecap: round; }
+.it-line.nt-hand.key .plain-line { stroke: var(--key); }
+.it-line.nt-hand.act .plain-line { stroke: var(--act); }
+.it-dot.nt-hub .dot-shape { fill: var(--text); }
+.it-line.nt-axis .plain-line { stroke: var(--node-line); stroke-width: 1.4; }
+
+/* a position on a ring, or a residue in a row */
+.it-state.ntp .st-shape { fill: var(--node); stroke: var(--node-line); stroke-width: 1.4; }
+.it-state.ntp .st-text { font: 650 15px var(--mono); fill: var(--node-text); }
+.it-state.ntp.soft .st-shape { fill: var(--surface2); }
+.it-state.ntp.soft .st-text { fill: var(--muted); font-weight: 500; }
+.it-state.ntp.act .st-shape { fill: var(--act-soft); stroke: var(--act); stroke-width: 2.4; }
+.it-state.ntp.act .st-text { fill: var(--act-deep); }
+.it-state.ntp.hot .st-shape { fill: var(--hot-soft); stroke: var(--hot); stroke-width: 2.6; }
+.it-state.ntp.hot .st-text { fill: var(--hot-deep); }
+.it-state.ntp.key .st-shape { fill: var(--key-soft); stroke: var(--key); stroke-width: 2.2; }
+.it-state.ntp.key .st-text { fill: var(--key-deep); }
+.it-state.ntp.good .st-shape { fill: var(--good-soft); stroke: var(--good); stroke-width: 2.4; }
+.it-state.ntp.good .st-text { fill: var(--good); }
+.it-state.ntp.bad .st-shape { fill: var(--bad-soft); stroke: var(--bad); stroke-width: 2; }
+.it-state.ntp.bad .st-text { fill: var(--bad); }
+
+/* residue classes and cells of the tables, by colour */
+.it-cell.ntc .cell-text { font-weight: 600; }
+.it-cell.ntc.k0 .cell-box { fill: color-mix(in srgb, var(--c1) 16%, var(--node)); stroke: color-mix(in srgb, var(--c1) 70%, var(--node)); }
+.it-cell.ntc.k1 .cell-box { fill: color-mix(in srgb, var(--c2) 18%, var(--node)); stroke: color-mix(in srgb, var(--c2) 70%, var(--node)); }
+.it-cell.ntc.k2 .cell-box { fill: color-mix(in srgb, var(--c4) 16%, var(--node)); stroke: color-mix(in srgb, var(--c4) 70%, var(--node)); }
+.it-cell.ntc.k3 .cell-box { fill: color-mix(in srgb, var(--hot) 20%, var(--node)); stroke: color-mix(in srgb, var(--hot) 80%, var(--node)); }
+.it-cell.ntc.k4 .cell-box { fill: color-mix(in srgb, var(--key) 14%, var(--node)); stroke: color-mix(in srgb, var(--key) 70%, var(--node)); }
+.it-cell.ntc.k5 .cell-box { fill: color-mix(in srgb, var(--heat) 14%, var(--node)); stroke: color-mix(in srgb, var(--heat) 70%, var(--node)); }
+.it-cell.ntc.k6 .cell-box { fill: color-mix(in srgb, var(--good) 22%, var(--node)); stroke: color-mix(in srgb, var(--good) 75%, var(--node)); }
+.it-cell.ntc.k7 .cell-box { fill: color-mix(in srgb, var(--wire) 16%, var(--node)); stroke: color-mix(in srgb, var(--wire) 60%, var(--node)); }
+.it-cell.ntc.ntzero .cell-text { fill: var(--muted); font-weight: 500; }
+.it-cell.ntc.ntone .cell-box { fill: var(--good-soft); stroke: var(--good); stroke-width: 1.8; }
+.it-cell.ntc.ntone .cell-text { fill: var(--good); font-weight: 700; }
+.it-cell.ntc.ntzd .cell-box { fill: var(--bad-soft); stroke: var(--bad); stroke-width: 1.8; }
+.it-cell.ntc.ntzd .cell-text { fill: var(--bad); font-weight: 700; }
+.it-cell.ntc.good .cell-box { fill: var(--good-soft); stroke: var(--good); stroke-width: 2; }
+.it-cell.ntc.good .cell-text { fill: var(--good); font-weight: 700; }
+.it-cell.ntc.bad .cell-box { fill: var(--bad-soft); stroke: var(--bad); stroke-width: 2; }
+.it-cell.ntc.bad .cell-text { fill: var(--bad); font-weight: 700; }
+.it-cell.ntc.struck .cell-box { fill: var(--surface2); stroke: var(--border); }
+.it-cell.ntc.struck .cell-text { fill: var(--muted); font-weight: 400; text-decoration: line-through; }
+.it-cell.ntc.empty .cell-box { fill: var(--surface2); stroke: var(--border); stroke-dasharray: 4 3; }
+.it-text.eq.bad .free-text { fill: var(--bad); font-weight: 700; }
+.it-text.eq.muted .free-text { fill: var(--muted); }
+.it-text.eq.mono .free-text { font-family: var(--mono); font-size: 0.94em; }
+.it-text.ntlab .free-text { font: 600 13px var(--font); fill: var(--muted); }
+.it-text.ntlab.act .free-text { fill: var(--act); font-weight: 700; }
+.it-text.ntlab.hot .free-text { fill: var(--hot-deep); font-weight: 700; }
+.it-text.ntlab.key .free-text { fill: var(--key); font-weight: 700; }
+.it-text.ntlab.good .free-text { fill: var(--good); font-weight: 700; }
