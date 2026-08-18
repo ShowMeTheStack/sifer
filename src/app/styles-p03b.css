@@ -1,0 +1,18 @@
+/* Part 3, second half: Geffe's histograms, Trivium's registers, the Salsa20 and ChaCha20 states */
+.it-cell.gbar .cell-box { fill: color-mix(in srgb, var(--wire) 40%, var(--node)); stroke: none; }
+.it-cell.gbar.hot .cell-box { fill: var(--hot); }
+.it-path.gaxis .free-path { stroke: var(--node-line); stroke-width: 1.4; fill: none; }
+.it-cell.good .cell-box { fill: var(--good-soft); stroke: var(--good); stroke-width: 1.8; }
+.it-cell.bad .cell-box { fill: var(--bad-soft); stroke: var(--bad); stroke-width: 1.8; }
+.it-cell.bit.good .cell-box { fill: var(--good-soft); stroke: var(--good); stroke-width: 1.8; }
+.it-text.bad .free-text { fill: var(--bad); font-weight: 700; }
+.it-text.dim .free-text { opacity: 0.55; }
+/* the roles of the words of a Salsa20 or ChaCha20 state */
+.it-cell.wconst .cell-box { fill: color-mix(in srgb, var(--c4) 12%, var(--node)); stroke: color-mix(in srgb, var(--c4) 60%, var(--node-line)); }
+.it-cell.wnonce .cell-box { fill: var(--good-soft); stroke: color-mix(in srgb, var(--good) 60%, var(--node-line)); }
+.it-cell.wctr .cell-box { fill: var(--hot-soft); stroke: var(--hot); stroke-width: 1.6; }
+.it-cell.wsub .cell-box { fill: var(--key-soft); stroke: var(--key); stroke-width: 2.4; }
+/* a Trivium tap marker */
+.it-path.trtap .free-path { stroke: var(--act); stroke-width: 1.6; fill: none; }
+.it-path.trtap.hot .free-path { stroke: var(--hot); }
+.it-path.trtap.key .free-path { stroke: var(--key); }
