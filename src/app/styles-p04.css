@@ -1,0 +1,20 @@
+/* Part 4, DES and the Feistel network: solid bit cells for 32- and 48-bit rows, and the pieces of the ladders. */
+.it-cell.dx .cell-box { fill: var(--bit-off); stroke: var(--node-line); stroke-width: 1; }
+.it-cell.dx.one .cell-box { fill: var(--bit-on); }
+.it-cell.dx.act .cell-box { stroke: var(--act); stroke-width: 2.2; }
+.it-cell.dx.act.zero .cell-box { fill: var(--act-soft); }
+.it-cell.dx.act.one .cell-box { fill: var(--act); }
+.it-cell.dx.hot .cell-box { stroke: var(--hot); stroke-width: 2; }
+.it-cell.dx.hot.zero .cell-box { fill: var(--hot-soft); }
+.it-cell.dx.hot.one .cell-box { fill: var(--hot); }
+.it-cell.dx.key .cell-box { stroke: color-mix(in srgb, var(--key) 60%, transparent); }
+.it-cell.dx.key.one .cell-box { fill: var(--key); }
+.it-cell.dx.key.zero .cell-box { fill: var(--key-soft); }
+.it-cell.dx.gone .cell-box { fill: none; stroke: var(--node-line); stroke-dasharray: 2 2; }
+.it-cell.dx.same .cell-box { opacity: 0.55; }
+.it-cell.bit.good .cell-box { fill: var(--good-soft); stroke: var(--good); stroke-width: 1.8; }
+.it-cell.bit.soft .cell-box { opacity: 0.5; }
+.it-cell.bit.soft .cell-text { opacity: 0.6; }
+.it-state.block.val2 .st-text { font: 600 14px var(--mono); }
+.it-state.block.val2 .st-text:first-child { font-family: var(--font); font-weight: 650; }
+.it-cell.avbar .cell-box { fill: var(--hot); stroke: none; }
