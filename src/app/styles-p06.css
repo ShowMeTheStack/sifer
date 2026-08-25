@@ -1,0 +1,31 @@
+/* Part 6: the pictures of the ECB topic. Lower-case looks a-h are the palette of the plaintext pictures (the same
+   in both themes: they are pictures); upper-case looks A-P are sixteen hues for ciphertext bytes, by their top nibble. */
+.bm.ba { fill: #bfe0f5; }
+.bm.bb { fill: #2f6fa8; }
+.bm.bc { fill: #6b6f78; }
+.bm.bd { fill: #fbfbf6; }
+.bm.be { fill: #d1453b; }
+.bm.bf { fill: #f7c548; }
+.bm.bg { fill: #2a2f45; }
+.bm.bh { fill: #fff1a8; }
+.bm.bA { fill: #d44949; }
+.bm.bB { fill: #d47d49; }
+.bm.bC { fill: #d4b149; }
+.bm.bD { fill: #c2d449; }
+.bm.bE { fill: #8ed449; }
+.bm.bF { fill: #5ad449; }
+.bm.bG { fill: #49d46c; }
+.bm.bH { fill: #49d4a0; }
+.bm.bI { fill: #49d4d4; }
+.bm.bJ { fill: #49a0d4; }
+.bm.bK { fill: #496cd4; }
+.bm.bL { fill: #5a49d4; }
+.bm.bM { fill: #8e49d4; }
+.bm.bN { fill: #c249d4; }
+.bm.bO { fill: #d449b1; }
+.bm.bP { fill: #d4497d; }
+:root[data-theme="dark"] .bm.ba { fill: #9cc8e6; }
+/* the frame round a picture, and a block picked out on it */
+.it-region.p6-pic .region-box { fill: none; stroke: var(--node-line); stroke-width: 1; }
+.it-region.p6-mark .region-box { fill: none; stroke: var(--hot); stroke-width: 2.4; }
+.it-region.p6-mark.act .region-box { stroke: var(--act); }
