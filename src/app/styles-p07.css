@@ -1,0 +1,66 @@
+/* Parts 7 to 9, public keys: people, lifelines and messages, long numbers you can open, fields of a padded block. */
+.it-state.pk-party .st-shape { fill: var(--surface2); stroke: var(--node-line); stroke-width: 1.8; }
+.it-state.pk-party .st-text { font: 700 18px var(--font); fill: var(--text); }
+.it-state.pk-party.alice .st-shape { fill: color-mix(in srgb, var(--act) 14%, var(--node)); stroke: var(--act); }
+.it-state.pk-party.alice .st-text { fill: var(--act-deep); }
+.it-state.pk-party.bob .st-shape { fill: color-mix(in srgb, var(--good) 14%, var(--node)); stroke: var(--good); }
+.it-state.pk-party.bob .st-text { fill: var(--good); }
+.it-state.pk-party.eve .st-shape, .it-state.pk-party.bad .st-shape { fill: var(--bad-soft); stroke: var(--bad); stroke-width: 2.2; }
+.it-state.pk-party.eve .st-text, .it-state.pk-party.bad .st-text { fill: var(--bad); }
+.it-state.pk-party.hot .st-shape { fill: var(--hot-soft); stroke: var(--hot); stroke-width: 2.4; }
+.it-state.pk-party.key .st-shape { fill: var(--key-soft); stroke: var(--key); stroke-width: 2.2; }
+.it-state.pk-party.soft .st-shape { fill: var(--surface2); stroke: var(--node-line); stroke-dasharray: 4 3; }
+.it-state.pk-party.soft .st-text { fill: var(--muted); }
+.it-text.pk-name.eve .free-text, .it-text.pk-name.bad .free-text { fill: var(--bad); }
+.it-line.pk-life .plain-line { stroke: var(--node-line); stroke-width: 1.6; stroke-dasharray: 6 5; }
+.it-wire.pk-msg .wire-path { stroke-width: 2; }
+.it-wire.pk-msg.bad .wire-path { stroke: var(--bad); stroke-width: 2.4; }
+.it-wire.pk-msg.good .wire-path { stroke: var(--good); stroke-width: 2.4; }
+.it-chip.bad .chip-box { stroke: var(--bad); fill: var(--bad-soft); } .it-chip.bad .chip-text { fill: var(--bad); }
+.it-chip.good .chip-box { stroke: var(--good); fill: var(--good-soft); } .it-chip.good .chip-text { fill: var(--good); }
+.it-chip .chip-text { font-family: var(--mono); }
+
+/* a long number: click it to read every digit */
+.it.pk-long { cursor: zoom-in; }
+.it.pk-long:hover .st-shape, .it.pk-long:hover .cell-box, .it.pk-long:hover .chip-box { stroke-dasharray: 3 2; }
+.pk-expand .pk-digits { font: 500 14px/1.55 var(--mono); word-break: break-all; overflow-wrap: anywhere; white-space: normal; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; padding: 12px 14px; max-height: 50vh; overflow: auto; user-select: all; }
+.pk-expand .pk-note { color: var(--muted); margin: 10px 2px 0; font-size: 14px; }
+
+/* value blocks */
+.it-state.block.good .st-shape { fill: var(--good-soft); stroke: var(--good); stroke-width: 2.2; }
+.it-state.block.good .st-text { fill: var(--good); }
+.it-state.block.bad .st-shape { fill: var(--bad-soft); stroke: var(--bad); stroke-width: 2.2; }
+.it-state.block.bad .st-text { fill: var(--bad); }
+.it-state.block.good.val2 .st-text:first-child, .it-state.block.bad.val2 .st-text:first-child { fill: var(--muted); }
+.it-text.bad .free-text { fill: var(--bad); font-weight: 700; }
+.it-text.muted .free-text { fill: var(--muted); }
+.it-text.eq.bad .free-text { fill: var(--bad); font-weight: 700; }
+.it-text.eq.muted .free-text { fill: var(--muted); }
+.it-region.good .region-box { fill: color-mix(in srgb, var(--good) 7%, var(--st-bg)); stroke: var(--good); stroke-width: 1.6; }
+.it-region.bad .region-box { fill: color-mix(in srgb, var(--bad) 7%, var(--st-bg)); stroke: var(--bad); stroke-width: 1.6; }
+.it-region.key .region-box { fill: color-mix(in srgb, var(--key) 7%, var(--st-bg)); stroke: var(--key); stroke-width: 1.6; }
+.it-edge.good .edge-path { stroke: var(--good); stroke-width: 2.4; }
+.it-edge.bad .edge-path { stroke: var(--bad); stroke-width: 2.4; }
+.it-edge.key .edge-path { stroke: var(--key); stroke-width: 2.2; }
+.it-edge.faint .edge-path { stroke: var(--node-line); stroke-width: 1.3; }
+.it-line.good .plain-line { stroke: var(--good); stroke-width: 2.4; }
+.it-line.bad .plain-line { stroke: var(--bad); stroke-width: 2.4; }
+.it-line.key .plain-line { stroke: var(--key); stroke-width: 2.2; }
+.it-cell.good .cell-box { fill: var(--good-soft); stroke: var(--good); stroke-width: 2; }
+.it-cell.good .cell-text { fill: var(--good); font-weight: 700; }
+.it-cell.bad .cell-box { fill: var(--bad-soft); stroke: var(--bad); stroke-width: 2; }
+.it-cell.bad .cell-text { fill: var(--bad); font-weight: 700; }
+
+/* the fields of a padded block (OAEP, PSS) */
+.it-cell.pk-field .cell-box { fill: var(--node); stroke: var(--node-line); stroke-width: 1.4; }
+.it-cell.pk-field .cell-text { font: 600 13px var(--mono); }
+.it-cell.pk-field.zero .cell-box { fill: var(--surface2); }
+.it-cell.pk-field.zero .cell-text { fill: var(--muted); }
+.it-cell.pk-field.hash .cell-box { fill: color-mix(in srgb, var(--c2) 14%, var(--node)); stroke: color-mix(in srgb, var(--c2) 70%, var(--node)); }
+.it-cell.pk-field.msg .cell-box { fill: color-mix(in srgb, var(--act) 12%, var(--node)); stroke: var(--act); }
+.it-cell.pk-field.seed .cell-box { fill: var(--key-soft); stroke: var(--key); }
+.it-cell.pk-field.seed .cell-text { fill: var(--key-deep); }
+.it-cell.pk-field.mask .cell-box { fill: color-mix(in srgb, var(--heat) 22%, var(--node)); stroke: var(--heat); }
+.it-cell.pk-field.sep .cell-box { fill: var(--hot-soft); stroke: var(--hot); }
+.it-cell.pk-field.sep .cell-text { fill: var(--hot-deep); }
+.it-state.block.val.pk-inline .st-text:first-child { font-family: var(--mono); }
