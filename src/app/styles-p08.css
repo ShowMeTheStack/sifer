@@ -1,0 +1,6 @@
+/* Part 8, the RSA scheme and making it fast: bars of work, and the bits of a Montgomery product. */
+.it-cell.p8bar .cell-box { fill: color-mix(in srgb, var(--wire) 42%, var(--node)); stroke: none; }
+.it-cell.p8bar.good .cell-box { fill: var(--good); }
+.it-cell.p8bar.hot .cell-box { fill: var(--hot); }
+.it-cell.bit.good .cell-box { fill: var(--good-soft); stroke: var(--good); stroke-width: 1.6; }
+.it-cell.bit.good .cell-text { fill: var(--good); }
