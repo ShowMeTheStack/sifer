@@ -1,0 +1,14 @@
+/* Part 9, computing logarithms: the ρ walk (a grey tail running into a coloured cycle), the tortoise and the hare,
+   and the probes of the small-subgroup attack. */
+.it-path.p9-walk .free-path { fill: none; stroke: var(--node-line); stroke-width: 1.8; stroke-linejoin: round; }
+.it-dot.p9-pt .dot-shape { stroke: var(--st-bg); stroke-width: 1.5; }
+.it-dot.p9-pt.tail .dot-shape { fill: var(--muted); }
+.it-dot.p9-pt.cyc .dot-shape { fill: var(--c2); }
+.it-dot.p9-pt.act .dot-shape { fill: var(--act); stroke: var(--act); stroke-width: 3; }
+.it-dot.p9-pt.key .dot-shape { fill: var(--key); stroke: var(--key); stroke-width: 3; }
+.it-dot.p9-pt.hot .dot-shape { fill: var(--hot); stroke: var(--hot-deep); stroke-width: 3; }
+.it-token.p9-tort .token-dot { fill: var(--act); stroke: var(--st-bg); stroke-width: 2; }
+.it-token.p9-hare .token-dot { fill: var(--key); stroke: var(--st-bg); stroke-width: 2; }
+.it-token.p9-tort .token-text, .it-token.p9-hare .token-text { fill: #fff; font: 700 12px var(--font); }
+:root[data-theme="dark"] .it-token.p9-tort .token-text, :root[data-theme="dark"] .it-token.p9-hare .token-text { fill: #10131a; }
+.it-token.p9-tort .token-text, .it-token.p9-hare .token-text { font-size: 14px; }

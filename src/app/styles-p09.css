@@ -1,0 +1,19 @@
+/* Part 9, the discrete logarithm: paint pots whose colours mix as Diffie–Hellman mixes exponents, and cost bars. */
+.it-state.pot {
+  --pc: #e8c43a; --pa: #d6453c; --pb: #2f6cd6;
+}
+.it-state.pot.ha0 { --pa: #d6453c; } .it-state.pot.ha1 { --pa: #2f6cd6; } .it-state.pot.ha2 { --pa: #b5389f; } .it-state.pot.ha3 { --pa: #1b9a8a; } .it-state.pot.ha4 { --pa: #6a4bd1; } .it-state.pot.ha5 { --pa: #c0611a; }
+.it-state.pot.hb0 { --pb: #d6453c; } .it-state.pot.hb1 { --pb: #2f6cd6; } .it-state.pot.hb2 { --pb: #b5389f; } .it-state.pot.hb3 { --pb: #1b9a8a; } .it-state.pot.hb4 { --pb: #6a4bd1; } .it-state.pot.hb5 { --pb: #c0611a; }
+.it-state.pot .st-shape { stroke: var(--text); stroke-width: 2; fill: var(--pc); }
+.it-state.pot .st-text { font: 700 15px var(--font); fill: #1a1a1a; }
+.it-state.pot.pa .st-shape { fill: var(--pa); }
+.it-state.pot.pb .st-shape { fill: var(--pb); }
+.it-state.pot.pca .st-shape { fill: color-mix(in oklch, var(--pc) 50%, var(--pa)); }
+.it-state.pot.pcb .st-shape { fill: color-mix(in oklch, var(--pc) 50%, var(--pb)); }
+.it-state.pot.pcab .st-shape { fill: color-mix(in oklch, color-mix(in oklch, var(--pc) 50%, var(--pa)) 67%, var(--pb)); }
+.it-state.pot.pcba .st-shape { fill: color-mix(in oklch, color-mix(in oklch, var(--pc) 50%, var(--pb)) 67%, var(--pa)); }
+.it-state.pot.peve .st-shape { fill: color-mix(in oklch, var(--pc) 62%, color-mix(in oklab, var(--pa), var(--pb))); }
+.it-state.pot.secret .st-shape { stroke: var(--key); stroke-width: 3; stroke-dasharray: 5 3; }
+.it-state.pot.shared .st-shape { stroke: var(--good); stroke-width: 3.4; }
+.it-state.pot.wrong .st-shape { stroke: var(--bad); stroke-width: 3; }
+.it-state.pot.pa .st-text, .it-state.pot.pb .st-text, .it-state.pot.pcab .st-text, .it-state.pot.pcba .st-text { fill: #fff; }
