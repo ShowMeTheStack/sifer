@@ -1,0 +1,94 @@
+/* Parts 10 and 11: elliptic curves and signatures. Classes start with e10- so they never meet another part's. */
+.it-path.e10-cubic .free-path { stroke: var(--act); stroke-width: 1.6; stroke-dasharray: 6 5; fill: none; }
+.it-path.e10-band .free-path { stroke: var(--good); stroke-width: 7; stroke-linecap: round; opacity: 0.45; fill: none; }
+.it-path.curve.e10-ghost .free-path { stroke: var(--node-line); stroke-width: 1.6; stroke-dasharray: 4 4; opacity: 0.8; }
+.it-path.curve.e10-sweep .free-path { stroke: var(--act); stroke-width: 2.6; }
+.it-dot.e10-ring .dot-shape { fill: none; stroke: var(--bad); stroke-width: 2.6; }
+.it-path.e10-half .free-path { stroke: var(--node-line); stroke-width: 1; stroke-dasharray: 2 4; }
+.it-path.e10-hop .free-path { stroke: var(--act); stroke-width: 1.5; fill: none; opacity: 0.75; }
+.it-path.e10-hop.hot .free-path { stroke: var(--hot); stroke-width: 2.4; opacity: 1; }
+.it-path.e10-walk .free-path { stroke: var(--node-line); stroke-width: 1.2; fill: none; }
+.it-path.e10-walk.act .free-path { stroke: var(--act); stroke-width: 1.8; }
+.it-path.e10-walk.hot .free-path { stroke: var(--hot); stroke-width: 2.2; }
+.it-path.e10-vec .free-path { stroke: var(--act); stroke-width: 2.4; fill: none; }
+.it-path.e10-vec.key .free-path { stroke: var(--key); }
+.it-path.e10-vec.good .free-path { stroke: var(--good); }
+.it-path.e10-vec.soft .free-path { stroke: var(--node-line); stroke-dasharray: 5 4; stroke-width: 1.8; }
+.it-path.e10-cellp .free-path { stroke: color-mix(in srgb, var(--act) 50%, transparent); stroke-width: 1.2; fill: color-mix(in srgb, var(--act) 8%, transparent); }
+.it-path.e10-box .free-path { stroke: var(--good); stroke-width: 1.6; stroke-dasharray: 5 4; fill: color-mix(in srgb, var(--good) 7%, transparent); }
+
+.it-text.e10-lab .free-text { font: 500 13px var(--font); fill: var(--muted); }
+.it-text.e10-val .free-text { font: 600 14px var(--mono); fill: var(--text); }
+.it-text.e10-val.act .free-text { fill: var(--act); } .it-text.e10-val.key .free-text { fill: var(--key); }
+.it-text.e10-val.good .free-text { fill: var(--good); } .it-text.e10-val.hot .free-text { fill: var(--hot-deep); }
+.it-text.e10-val.bad .free-text { fill: var(--bad); }
+.it-text.e10-head .free-text { font: 700 13px var(--font); fill: var(--muted); }
+.it-text.eq.bad .free-text { fill: var(--bad); font-weight: 700; }
+.it-text.eq.muted .free-text { fill: var(--muted); }
+.it-text.eq.mono .free-text { font-family: var(--mono); font-size: 0.92em; }
+.it-text.e10-note .free-text { font: 500 13px var(--font); fill: var(--muted); }
+.it-text.ptname.e10-o .free-text { fill: var(--muted); }
+.it-text.ptname.bad .free-text { fill: var(--bad); }
+.it-text.ptname.good .free-text { fill: var(--good); }
+
+.it-cell.e10-cell .cell-box { fill: var(--node); stroke: var(--border); stroke-width: 1; }
+.it-cell.e10-cell .cell-text { fill: var(--text); }
+.it-cell.e10-cell.mono .cell-text { font-family: var(--mono); font-weight: 500; }
+.it-cell.e10-cell.dim .cell-text { fill: var(--muted); }
+.it-cell.e10-cell.act .cell-box { fill: var(--act-soft); stroke: var(--act); stroke-width: 1.6; }
+.it-cell.e10-cell.act .cell-text { fill: var(--act-deep); }
+.it-cell.e10-cell.key .cell-box { fill: var(--key-soft); stroke: var(--key); stroke-width: 1.6; }
+.it-cell.e10-cell.key .cell-text { fill: var(--key-deep); }
+.it-cell.e10-cell.hot .cell-box { fill: var(--hot-soft); stroke: var(--hot); stroke-width: 1.8; }
+.it-cell.e10-cell.hot .cell-text { fill: var(--hot-deep); font-weight: 700; }
+.it-cell.e10-cell.good .cell-box { fill: var(--good-soft); stroke: var(--good); stroke-width: 1.6; }
+.it-cell.e10-cell.good .cell-text { fill: var(--good); font-weight: 700; }
+.it-cell.e10-cell.bad .cell-box { fill: var(--bad-soft); stroke: var(--bad); stroke-width: 1.6; }
+.it-cell.e10-cell.bad .cell-text { fill: var(--bad); font-weight: 700; }
+.it-cell.e10-cell.head .cell-box { fill: var(--surface2); stroke: var(--border); }
+.it-cell.e10-cell.head .cell-text { font-weight: 700; fill: var(--muted); }
+.it-cell.e10-cell.faint .cell-box { fill: transparent; stroke: var(--border); stroke-dasharray: 3 3; }
+.it-cell.e10-cell.faint .cell-text { fill: var(--muted); }
+
+.it-cell.e10-bit .cell-box { fill: var(--bit-off); stroke: var(--border); stroke-width: 1; }
+.it-cell.e10-bit .cell-text { font: 600 14px var(--mono); fill: var(--muted); }
+.it-cell.e10-bit.one .cell-box { fill: var(--bit-on); stroke: var(--bit-on); }
+.it-cell.e10-bit.one .cell-text { fill: var(--st-bg); }
+.it-cell.e10-bit.done .cell-box { opacity: 0.45; }
+.it-cell.e10-bit.cur .cell-box { stroke: var(--hot); stroke-width: 3; }
+.it-cell.e10-bit.neg .cell-box { fill: var(--key); stroke: var(--key); }
+.it-cell.e10-bit.neg .cell-text { fill: #fff; }
+.it-cell.e10-bit.pos .cell-box { fill: var(--act); stroke: var(--act); }
+.it-cell.e10-bit.pos .cell-text { fill: #fff; }
+.it-cell.e10-bit.flip .cell-box { fill: var(--hot); stroke: var(--hot-deep); }
+.it-cell.e10-bit.flip .cell-text { fill: #1b1300; }
+
+.it-dot.cloud.e10-o2 .dot-shape { fill: var(--c4); }
+.it-dot.cloud.e10-k0 .dot-shape { fill: var(--c1); } .it-dot.cloud.e10-k1 .dot-shape { fill: var(--c2); }
+.it-dot.cloud.e10-k2 .dot-shape { fill: var(--c4); } .it-dot.cloud.e10-k3 .dot-shape { fill: var(--hot); }
+.it-dot.cloud.e10-k4 .dot-shape { fill: var(--key); } .it-dot.cloud.e10-k5 .dot-shape { fill: var(--good); }
+.it-dot.cloud.e10-k6 .dot-shape { fill: var(--act); } .it-dot.cloud.e10-k7 .dot-shape { fill: var(--bad); }
+.it-dot.cloud.e10-on .dot-shape { fill: var(--act); }
+.it-dot.cloud.e10-faint .dot-shape { opacity: 0.35; }
+.it-dot.e10-w0 .dot-shape { fill: var(--c1); } .it-dot.e10-w1 .dot-shape { fill: var(--c2); } .it-dot.e10-w2 .dot-shape { fill: var(--c4); }
+.it-dot.e10-hit .dot-shape { fill: var(--hot); stroke: var(--st-bg); stroke-width: 1.5; }
+.it-dot.e10-lat .dot-shape { fill: color-mix(in srgb, var(--wire) 60%, var(--st-bg)); }
+.it-cell.e10-swatch .cell-box { stroke: none; }
+.it-cell.e10-swatch.e10-k0 .cell-box { fill: var(--c1); } .it-cell.e10-swatch.e10-k1 .cell-box { fill: var(--c2); }
+.it-cell.e10-swatch.e10-k2 .cell-box { fill: var(--c4); } .it-cell.e10-swatch.e10-k3 .cell-box { fill: var(--hot); }
+.it-cell.e10-swatch.e10-k4 .cell-box { fill: var(--key); } .it-cell.e10-swatch.e10-k5 .cell-box { fill: var(--good); }
+.it-cell.e10-swatch.e10-k6 .cell-box { fill: var(--act); } .it-cell.e10-swatch.e10-k7 .cell-box { fill: var(--bad); }
+.it-cell.e10-swatch.e10-w0 .cell-box { fill: var(--c1); } .it-cell.e10-swatch.e10-w1 .cell-box { fill: var(--c2); } .it-cell.e10-swatch.e10-w2 .cell-box { fill: var(--c4); }
+
+.it-state.block.e10-ok .st-shape { fill: var(--good-soft); stroke: var(--good); stroke-width: 2.2; }
+.it-state.block.e10-ok .st-text { fill: var(--good); }
+.it-state.block.e10-no .st-shape { fill: var(--bad-soft); stroke: var(--bad); stroke-width: 2.2; }
+.it-state.block.e10-no .st-text { fill: var(--bad); }
+.it-state.block.e10-reg .st-shape { fill: var(--node); stroke: var(--act); stroke-width: 2; }
+.it-state.block.e10-reg.key .st-shape { stroke: var(--key); }
+.it-state.block.e10-reg.hot .st-shape { fill: var(--hot-soft); stroke: var(--hot); stroke-width: 2.6; }
+.it-wire.e10-arrow .wire-path { stroke: var(--wire); stroke-width: 1.8; }
+.it-wire.e10-arrow.act .wire-path { stroke: var(--act); stroke-width: 2.2; }
+.it-wire.e10-arrow.key .wire-path { stroke: var(--key); stroke-width: 2.2; }
+.it-wire.e10-arrow.bad .wire-path { stroke: var(--bad); stroke-width: 2.2; stroke-dasharray: 6 4; }
+.it-path.modline.e10-faintline .free-path { stroke-width: 1; opacity: 0.28; stroke-dasharray: 3 4; }
