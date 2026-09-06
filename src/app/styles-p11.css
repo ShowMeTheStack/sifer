@@ -1,0 +1,53 @@
+/* Part 11, digital signatures: value blocks of hex, rows of bytes and bits, verdicts, the two lanes of DSA, the
+   rows of the nonce table. */
+.it-state.block.s11-hb .st-text:last-child { font-family: var(--mono); }
+.it-state.block.soft .st-shape { fill: var(--surface2); stroke: var(--node-line); stroke-dasharray: 4 3; }
+.it-state.block.soft .st-text { fill: var(--muted); }
+.it-text.s11-verdict .free-text { font-weight: 700; }
+.it-text.good .free-text { fill: var(--good); }
+.it-text.hot .free-text { fill: var(--hot-deep); font-weight: 700; }
+.it-text.key .free-text { fill: var(--key-deep); }
+.it-text.act .free-text { fill: var(--act-deep); }
+
+/* bytes and bits */
+.it-cell.s11-byte .cell-box { fill: var(--node); stroke: var(--node-line); stroke-width: 1; }
+.it-cell.s11-byte .cell-text { font: 600 12px var(--mono); }
+.it-cell.s11-byte.key .cell-box { fill: var(--key-soft); stroke: var(--key); }
+.it-cell.s11-byte.key .cell-text { fill: var(--key-deep); }
+.it-cell.s11-byte.act .cell-box { fill: var(--act-soft); stroke: var(--act); }
+.it-cell.s11-byte.act .cell-text { fill: var(--act-deep); }
+.it-cell.s11-byte.hot .cell-box { fill: var(--hot-soft); stroke: var(--hot); stroke-width: 2; }
+.it-cell.s11-byte.hot .cell-text { fill: var(--hot-deep); }
+.it-cell.s11-byte.good .cell-box { fill: var(--good-soft); stroke: var(--good); }
+.it-cell.s11-byte.good .cell-text { fill: var(--good); }
+.it-cell.s11-byte.dim .cell-text { fill: var(--muted); font-weight: 500; }
+.it-cell.bit.s11-clear .cell-box { fill: var(--bad-soft); stroke: var(--bad); stroke-width: 1.8; }
+.it-cell.bit.s11-clear .cell-text { fill: var(--bad); }
+.it-cell.bit.s11-set .cell-box { fill: var(--good-soft); stroke: var(--good); stroke-width: 1.8; }
+.it-cell.bit.s11-set .cell-text { fill: var(--good); }
+
+/* the lanes of DSA: the big group and the exponents */
+.it-region.s11-lane-p .region-box { fill: color-mix(in srgb, var(--act) 5%, var(--st-bg)); stroke: color-mix(in srgb, var(--act) 45%, var(--border)); stroke-width: 1.4; }
+.it-region.s11-lane-q .region-box { fill: color-mix(in srgb, var(--key) 5%, var(--st-bg)); stroke: color-mix(in srgb, var(--key) 45%, var(--border)); stroke-width: 1.4; }
+
+/* table cells that carry a verdict or a warning */
+.it-cell.s11-cell.good .cell-box { fill: var(--good-soft); stroke: var(--good); }
+.it-cell.s11-cell.good .cell-text { fill: var(--good); font-weight: 700; }
+.it-cell.s11-cell.bad .cell-box { fill: var(--bad-soft); stroke: var(--bad); }
+.it-cell.s11-cell.bad .cell-text { fill: var(--bad); font-weight: 700; }
+.it-cell.s11-cell.hot .cell-box { fill: var(--hot-soft); stroke: var(--hot); }
+.it-cell.s11-cell.hot .cell-text { fill: var(--hot-deep); font-weight: 700; }
+.it-cell.s11-cell.key .cell-box { fill: var(--key-soft); stroke: var(--key); }
+.it-cell.s11-cell.key .cell-text { fill: var(--key-deep); }
+.it-cell.s11-cell.act .cell-box { fill: var(--act-soft); stroke: var(--act); }
+.it-cell.s11-cell.act .cell-text { fill: var(--act-deep); }
+.it-cell.s11-cell.best .cell-box { fill: var(--good-soft); stroke: var(--good); stroke-width: 2.2; }
+.it-cell.s11-cell.best .cell-text { fill: var(--good); font-weight: 700; }
+.it-text.s11-head .free-text { font: 700 12px var(--font); fill: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+.it-cell.s11-cell .cell-box { fill: var(--node); stroke: var(--border); stroke-width: 1; }
+.it-cell.s11-cell .cell-text { fill: var(--text); }
+.it-cell.s11-cell.mono .cell-text { font-family: var(--mono); font-weight: 500; }
+.it-cell.s11-cell.dim .cell-text { fill: var(--muted); }
+.it-cell.s11-cell.head .cell-box { fill: var(--surface2); stroke: var(--border); }
+.it-cell.s11-cell.head .cell-text { font-weight: 700; fill: var(--muted); }
+.it-text.s11-colhead .free-text { fill: var(--muted); }
