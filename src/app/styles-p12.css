@@ -1,0 +1,85 @@
+/* Parts 12 and 13: hash functions, MACs and protocols. Curves on plots, cells and blocks that are good or bad,
+   byte roles in a padded message, and the message-sequence charts of kit-msc.js. */
+.it-path.p12-line .free-path { stroke: var(--act); stroke-width: 2.2; fill: none; stroke-linejoin: round; stroke-linecap: round; }
+.it-path.p12-line.soft .free-path { stroke: color-mix(in srgb, var(--act) 55%, transparent); stroke-width: 1.8; }
+.it-path.p12-line.dash .free-path { stroke: var(--act); stroke-width: 1.4; stroke-dasharray: 5 4; }
+.it-path.p12-line.hot .free-path { stroke: var(--hot); }
+.it-path.p12-line.faint .free-path { stroke: var(--node-line); stroke-width: 1.2; }
+.it-cell.p12-on .cell-box { fill: var(--bit-on); stroke: none; }
+.it-cell.p12-b0 .cell-box { fill: var(--bit-off); stroke: var(--node-line); stroke-width: 0.6; }
+.it-cell.p12-b1 .cell-box { fill: var(--bit-on); stroke: none; }
+.it-cell.p12-b2 .cell-box { fill: var(--hot); stroke: none; }
+.it-cell.p12-b3 .cell-box { fill: var(--act); stroke: none; }
+.it-cell.good .cell-box { fill: var(--good-soft); stroke: var(--good); stroke-width: 2; }
+.it-cell.good .cell-text { fill: var(--good); font-weight: 700; }
+.it-cell.bad .cell-box { fill: color-mix(in srgb, var(--bad) 12%, var(--node)); stroke: var(--bad); stroke-width: 2; }
+.it-cell.bad .cell-text { fill: var(--bad); font-weight: 700; }
+.it-state.block.good .st-shape { fill: var(--good-soft); stroke: var(--good); stroke-width: 2.2; }
+.it-state.block.bad .st-shape { fill: color-mix(in srgb, var(--bad) 10%, var(--node)); stroke: var(--bad); stroke-width: 2.2; }
+.it-state.block.good.val2 .st-text:nth-child(2) { fill: var(--good); }
+.it-state.block.bad.val2 .st-text:nth-child(2) { fill: var(--bad); }
+.it-text.bad .free-text { fill: var(--bad); font-weight: 700; }
+.it-region.good .region-box { fill: color-mix(in srgb, var(--good) 6%, var(--st-bg)); stroke: var(--good); stroke-width: 1.6; }
+.it-region.bad .region-box { fill: color-mix(in srgb, var(--bad) 6%, var(--st-bg)); stroke: var(--bad); stroke-width: 1.6; }
+.it-region.keyband .region-box { fill: color-mix(in srgb, var(--key) 7%, var(--st-bg)); stroke: color-mix(in srgb, var(--key) 55%, transparent); stroke-dasharray: 5 4; }
+.it-wire.good .wire-path { stroke: var(--good); stroke-width: 2.4; }
+.it-wire.bad .wire-path { stroke: var(--bad); stroke-width: 2.4; }
+.it-chip.good .chip-box { stroke: var(--good); fill: var(--good-soft); } .it-chip.good .chip-text { fill: var(--good); }
+.it-chip.bad .chip-box { stroke: var(--bad); fill: color-mix(in srgb, var(--bad) 10%, var(--surface)); } .it-chip.bad .chip-text { fill: var(--bad); }
+/* the roles of the bytes of a padded message */
+.it-cell.pm .cell-box { fill: color-mix(in srgb, var(--act) 12%, var(--node)); stroke: color-mix(in srgb, var(--act) 45%, var(--node)); stroke-width: 1; }
+.it-cell.p80 .cell-box { fill: var(--hot-soft); stroke: var(--hot); stroke-width: 1.4; }
+.it-cell.p00 .cell-box { fill: var(--surface2); stroke: var(--node-line); stroke-width: 0.8; }
+.it-cell.p00 .cell-text { fill: var(--muted); font-weight: 500; }
+.it-cell.plen .cell-box { fill: var(--key-soft); stroke: var(--key); stroke-width: 1.2; }
+.it-cell.plen .cell-text { fill: var(--key-deep); }
+.it-cell.pcap .cell-box { fill: color-mix(in srgb, var(--wire) 22%, var(--node)); stroke: none; }
+.it-cell.prate .cell-box { fill: color-mix(in srgb, var(--act) 18%, var(--node)); stroke: none; }
+/* a timeline */
+.it-path.p12-axis .free-path { stroke: var(--text); stroke-width: 2; }
+.it-path.p12-stem .free-path { stroke: var(--node-line); stroke-width: 1.2; }
+.it-path.p12-stem.act .free-path { stroke: var(--act); stroke-width: 2; }
+.it-dot.bad .dot-shape { fill: var(--bad); stroke: var(--st-bg); stroke-width: 1.5; }
+.it-dot.good .dot-shape { fill: var(--good); stroke: var(--st-bg); stroke-width: 1.5; }
+/* message-sequence charts */
+.it-line.msc-life .plain-line { stroke: var(--node-line); stroke-width: 1.6; stroke-dasharray: 6 4; }
+.it-state.msc-head .st-shape { fill: var(--surface); stroke: var(--wire); stroke-width: 1.7; }
+.it-state.msc-head .st-text { font: 700 14px var(--font); }
+.it-state.msc-head.trusted .st-shape { fill: color-mix(in srgb, var(--good) 10%, var(--surface)); stroke: var(--good); }
+.it-state.msc-head.attacker .st-shape { fill: color-mix(in srgb, var(--bad) 10%, var(--surface)); stroke: var(--bad); }
+.it-state.msc-head.eavesdropper .st-shape { fill: color-mix(in srgb, var(--bad) 6%, var(--surface)); stroke: var(--bad); stroke-dasharray: 4 3; }
+.it-wire.msc-msg .wire-path { stroke: var(--wire); stroke-width: 1.8; }
+.it-wire.msc-msg.act .wire-path { stroke: var(--act); stroke-width: 2.6; }
+.it-wire.msc-msg.bad .wire-path { stroke: var(--bad); stroke-width: 2.4; }
+.it-wire.msc-msg.past .wire-path { stroke: var(--node-line); }
+.it-wire.msc-msg.dashed .wire-path { stroke-dasharray: 7 4; }
+.it-text.msc-lab .free-text { font: 650 14px var(--font); fill: var(--text); }
+.it-text.msc-lab.past .free-text { fill: var(--muted); font-weight: 500; }
+.it-text.msc-lab.act .free-text { fill: var(--act); font-weight: 700; }
+.it-text.msc-lab.bad .free-text { fill: var(--bad); font-weight: 700; }
+.it-text.msc-term .free-text { font: 600 13.5px var(--mono); fill: var(--text); }
+.it-text.msc-term.past .free-text { fill: var(--muted); font-weight: 500; }
+.it-text.msc-term.act .free-text { fill: var(--act-deep); }
+.it-text.msc-term.bad .free-text { fill: var(--bad); }
+.it-cell.msc-know .cell-box { fill: var(--surface2); stroke: var(--node-line); stroke-width: 1; }
+.it-cell.msc-know .cell-text { font: 600 13px var(--mono); fill: var(--text); }
+.it-cell.msc-know.key .cell-box { fill: var(--key-soft); stroke: var(--key); }
+.it-cell.msc-know.key .cell-text { fill: var(--key-deep); }
+.it-cell.msc-know.new .cell-box { fill: var(--hot-soft); stroke: var(--hot); stroke-width: 2; }
+.it-cell.msc-know.sealed .cell-box { fill: var(--surface); stroke: var(--node-line); stroke-dasharray: 3 3; }
+.it-cell.msc-know.sealed .cell-text { fill: var(--muted); }
+.it-cell.msc-know.bad .cell-box { fill: color-mix(in srgb, var(--bad) 12%, var(--node)); stroke: var(--bad); stroke-width: 2; }
+.it-cell.msc-know.bad .cell-text { fill: var(--bad); }
+.it-cell.msc-check .cell-box { fill: var(--good-soft); stroke: var(--good); stroke-width: 1.6; }
+.it-cell.msc-check .cell-text { font: 650 13px var(--font); fill: var(--good); }
+.it-cell.msc-check.bad .cell-box { fill: color-mix(in srgb, var(--bad) 12%, var(--node)); stroke: var(--bad); }
+.it-cell.msc-check.bad .cell-text { fill: var(--bad); }
+.it-cell.msc-check.past .cell-box { fill: var(--surface2); stroke: var(--node-line); }
+.it-cell.msc-check.past .cell-text { fill: var(--muted); font-weight: 500; }
+.it-cell.msc-note .cell-box { fill: color-mix(in srgb, var(--c4) 8%, var(--surface)); stroke: color-mix(in srgb, var(--c4) 60%, transparent); stroke-dasharray: 5 3; }
+.it-cell.msc-note .cell-text { font: italic 650 13px var(--font); fill: color-mix(in srgb, var(--c4) 50%, var(--text)); }
+.it-cell.msc-note.past .cell-text { fill: var(--muted); font-weight: 500; }
+.it-cell.p12-sched .cell-box { fill: color-mix(in srgb, var(--act) 7%, var(--node)); stroke: color-mix(in srgb, var(--act) 40%, var(--node)); }
+/* labels and headings of these parts, at sizes that stay legible when the stage is scaled down */
+.it-text.ptick .free-text { font: 500 13px var(--font); fill: var(--muted); font-variant-numeric: tabular-nums; }
+.it-text.ptitle .free-text { font: 700 13px var(--font); fill: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
