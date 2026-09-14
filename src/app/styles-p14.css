@@ -1,0 +1,75 @@
+/* Parts 14 and 15: bars, data lines, plots and the pieces of the post-quantum and side-channel pictures */
+.it-cell.bar .cell-box { fill: color-mix(in srgb, var(--wire) 42%, var(--node)); stroke: none; }
+.it-cell.bar.key .cell-box { fill: var(--key); }
+.it-cell.bar.neg .cell-box { fill: color-mix(in srgb, var(--wire) 25%, var(--node)); }
+.it-cell.bar.key.neg .cell-box { fill: color-mix(in srgb, var(--key) 55%, var(--node)); stroke: var(--key); stroke-width: 1.4; }
+.it-cell.bar.good .cell-box { fill: var(--good); }
+.it-cell.bar.hot .cell-box { fill: var(--hot); }
+.it-cell.bar.act .cell-box { fill: var(--act); }
+.it-cell.bar.bad .cell-box { fill: var(--bad); }
+.it-cell.bar.soft .cell-box { fill: color-mix(in srgb, var(--wire) 22%, var(--node)); }
+.it-cell.bar.dim .cell-box { opacity: 0.5; }
+.it-text.dim .free-text { opacity: 0.55; }
+.it-text.bad .free-text { fill: var(--bad); font-weight: 700; }
+.dline { fill: none; }
+.it-path.dline .free-path { stroke: var(--wire); stroke-width: 1.6; stroke-linejoin: round; stroke-linecap: round; fill: none; }
+.it-path.dline.soft .free-path { stroke: color-mix(in srgb, var(--wire) 45%, transparent); stroke-width: 1.4; stroke-dasharray: 4 3; }
+.it-path.dline.faint .free-path { stroke: color-mix(in srgb, var(--wire) 22%, transparent); stroke-width: 1; }
+.it-path.dline.act .free-path { stroke: var(--act); stroke-width: 2.2; }
+.it-path.dline.hot .free-path { stroke: var(--hot); stroke-width: 2.4; }
+.it-path.dline.key .free-path { stroke: var(--key); stroke-width: 2.4; }
+.it-path.dline.good .free-path { stroke: var(--good); stroke-width: 2.2; }
+.it-path.dline.bad .free-path { stroke: var(--bad); stroke-width: 2.2; }
+.it-path.dline.prob .free-path { stroke: var(--act); stroke-width: 1.3; fill: color-mix(in srgb, var(--act) 18%, transparent); }
+.it-path.dline.trace .free-path { stroke: var(--wire); stroke-width: 1.3; }
+.it-path.meanline .free-path { stroke: var(--hot); stroke-width: 1.8; stroke-dasharray: 6 4; }
+.it-path.needline .free-path { stroke: var(--hot); stroke-width: 2; stroke-dasharray: 6 4; }
+.it-path.band .free-path { stroke: none; fill: color-mix(in srgb, var(--good) 12%, transparent); }
+.it-path.band.bad .free-path { fill: color-mix(in srgb, var(--bad) 10%, transparent); }
+.it-path.band.act .free-path { fill: color-mix(in srgb, var(--act) 10%, transparent); }
+.it-path.band.hot .free-path { fill: color-mix(in srgb, var(--hot) 14%, transparent); }
+.it-path.vec .free-path { stroke: var(--act); stroke-width: 2.6; stroke-linecap: round; }
+.it-path.vec.key .free-path { stroke: var(--key); }
+.it-path.vec.hot .free-path { stroke: var(--hot); }
+.it-path.vec.good .free-path { stroke: var(--good); }
+.it-path.vec.soft .free-path { stroke: color-mix(in srgb, var(--act) 40%, transparent); stroke-dasharray: 5 4; stroke-width: 2; }
+.it-path.cellpath .free-path { stroke: color-mix(in srgb, var(--act) 50%, transparent); stroke-width: 1.3; fill: color-mix(in srgb, var(--act) 8%, transparent); }
+.it-path.cellpath.key .free-path { stroke: color-mix(in srgb, var(--key) 50%, transparent); fill: color-mix(in srgb, var(--key) 8%, transparent); }
+.it-dot.lat .dot-shape { fill: color-mix(in srgb, var(--wire) 60%, var(--st-bg)); }
+.it-dot.good .dot-shape { fill: var(--good); stroke: var(--st-bg); stroke-width: 1.5; }
+.it-dot.bad .dot-shape { fill: var(--bad); stroke: var(--st-bg); stroke-width: 1.5; }
+.it-dot.ring .dot-shape { fill: none; stroke: var(--hot); stroke-width: 2.4; }
+.it-cell.bit.zero .cell-box { fill: var(--node); }
+.it-cell.bit.bad .cell-box { fill: var(--bad-soft); stroke: var(--bad); stroke-width: 1.8; }
+.it-cell.bit.good .cell-box { fill: var(--good-soft); stroke: var(--good); stroke-width: 1.8; }
+.it-cell.good .cell-box { fill: var(--good-soft); stroke: var(--good); stroke-width: 1.8; }
+.it-cell.bad .cell-box { fill: var(--bad-soft); stroke: var(--bad); stroke-width: 1.8; }
+.it-cell.code .cell-text { font: 500 13px var(--mono); }
+.it-cell.code .cell-box { fill: var(--node); stroke: var(--border); }
+.it-cell.code.hot .cell-box { fill: var(--hot-soft); stroke: var(--hot); }
+.it-cell.code.bad .cell-box { fill: var(--bad-soft); stroke: var(--bad); }
+.it-cell.code.good .cell-box { fill: var(--good-soft); stroke: var(--good); }
+.it-state.block.good .st-shape { fill: var(--good-soft); stroke: var(--good); stroke-width: 2.2; }
+.it-state.block.bad .st-shape { fill: var(--bad-soft); stroke: var(--bad); stroke-width: 2.2; }
+.it-region.good .region-box { fill: color-mix(in srgb, var(--good) 6%, var(--st-bg)); stroke: var(--good); stroke-width: 1.6; }
+.it-region.bad .region-box { fill: color-mix(in srgb, var(--bad) 6%, var(--st-bg)); stroke: var(--bad); stroke-width: 1.6; }
+.it-region.key .region-box { fill: color-mix(in srgb, var(--key) 6%, var(--st-bg)); stroke: color-mix(in srgb, var(--key) 55%, transparent); stroke-dasharray: 5 4; }
+.it-wire.vecw .wire-path { stroke-width: 2.6; }
+.it-wire.vecw.soft .wire-path { stroke: color-mix(in srgb, var(--wire) 55%, transparent); stroke-dasharray: 5 4; stroke-width: 2; }
+.it-edge.good .edge-path { stroke: var(--good); stroke-width: 2.8; }
+.it-text.ptname.act .free-text { fill: var(--act); }
+.it-text.ptname.hot .free-text { fill: var(--hot-deep); }
+.it-text.ptname.key .free-text { fill: var(--key); }
+.it-text.ptname.good .free-text { fill: var(--good); }
+.it-text.ptname.soft .free-text { fill: var(--muted); font-weight: 600; }
+.it-path.dline.prob.bad .free-path { stroke: var(--bad); fill: color-mix(in srgb, var(--bad) 30%, transparent); }
+.it-cell.bar.white .cell-box { fill: var(--node); stroke: var(--wire); stroke-width: 1.4; }
+.it-cell.bar.actsoft .cell-box { fill: var(--act-soft); stroke: var(--act); stroke-width: 1.6; }
+.it-cell.bar.surface .cell-box { fill: var(--surface2); stroke: var(--node-line); stroke-width: 1.2; }
+.it-path.dline.mesh .free-path { stroke-width: 0.45; }
+.it-path.dline.mesh.act .free-path { stroke-width: 0.7; }
+.it-path.dline.trace.hot .free-path { stroke: var(--hot); stroke-width: 2.2; }
+.it-path.dline.trace.act .free-path { stroke: var(--act); stroke-width: 1.8; }
+.it-path.dline.trace.key .free-path { stroke: var(--key); stroke-width: 2.2; }
+.it-path.dline.trace.soft .free-path { stroke: color-mix(in srgb, var(--wire) 45%, transparent); stroke-width: 1.3; stroke-dasharray: 4 3; }
+.it-path.dline.trace.faint .free-path { stroke: color-mix(in srgb, var(--wire) 26%, transparent); stroke-width: 1; }
