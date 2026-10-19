@@ -47,6 +47,7 @@
       ['Tooring', 'https://tooring.jyotiprakash.org', 'theory of computation you can play with: automata, grammars and Turing machines, animated'],
       ['Sirkit', 'https://sirkit.jyotiprakash.org', 'digital design you can build, run and see inside, from gates to a small processor'],
       ['Nooral', 'https://nooral.jyotiprakash.org', 'machine learning you can see inside: every model opened up, from least squares to a tiny GPT trained in the browser'],
+      ['Proses', 'https://proses.jyotiprakash.org', 'operating systems you can see inside: processes, scheduling, memory, synchronisation and file systems as machines you set up and break'],
     ],
     links: [
       ['mail@jyotiprakash.org', 'mailto:mail@jyotiprakash.org'],
